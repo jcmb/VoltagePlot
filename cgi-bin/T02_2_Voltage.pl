@@ -108,7 +108,7 @@ else {
 #print "Content-type: text/html\n\n";
 print "<html><head>";
 print '<link rel="stylesheet" type="text/css" href="/css/tcui-styles.css">';
-#print "<meta http-equiv=\"refresh\" content=\"5; url=/results/Tracking$project/$name\">";
+print "<meta http-equiv=\"refresh\" content=\"5; url=/results/Voltage/$project/$Point/$name\">";
 print "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=iso-8859-1\" />";
 print "<title>Plotting GNSS Tracking Data</title></head><body><h1>Processing $filename:</h1>\n";
 
