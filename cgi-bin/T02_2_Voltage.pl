@@ -89,7 +89,6 @@ else
 
 if (defined ($project)) {
     if  (! $project) {
-    else  {
         $project="General";
         }
 }
@@ -99,7 +98,6 @@ else {
 
 if (defined ($Point)) {
     if  (! $Point) {
-    else  {
         $Point=$name;
         }
 }
@@ -154,7 +152,7 @@ if ($file_linked) {
     system("curl -L --silent -o $upload_file $file_link")
 }
 
-my $TZ=0
+my $TZ=0;
 print "Data is being processed: This will normally takes a few seconds but can take longer for very large files.<br>";
 print "The graphs will be at \<a href=\"/results/Voltage/$project/$Point/$name\"\>/results/Voltage/$project/$Point/$name\</a\>\n";
 print "<p/>Processing will continue if you navigate away from this page<br/>";
