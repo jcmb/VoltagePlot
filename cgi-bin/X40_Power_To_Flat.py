@@ -4,8 +4,7 @@
 import pprint
 import sys
 import csv
-import GPS_TIME
-
+from JCMBSoftPyLib import GPS_TIME
 
 writer = csv.writer(sys.stdout)
 
