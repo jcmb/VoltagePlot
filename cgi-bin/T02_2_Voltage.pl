@@ -25,7 +25,6 @@ my $filename = $query->param('file');
 my $file_link = $query->param('file_link');
 my $project = $query->param('project');
 my $Point = $query->param('Point');
-my $Decimate = $query->param('Decimate');
 
 if (defined ($project)) {
     if  ($project) {
@@ -166,4 +165,4 @@ print "Data is being processed: This will normally takes a few seconds but can t
 print "The graphs will be at \<a href=\"/results/Tracking$project/$name\"\>/results/Tracking$project/$name/\</a\>\n";
 print "<p/>Processing will continue if you navigate away from this page<br/>";
 print "<pre>\n";
-system "./start_single.sh",$upload_file,$extension,$TrimbleTools,$Decimate,$project
+system "./start_single.sh",$upload_file,$extension,$TrimbleTools,$project
