@@ -26,29 +26,6 @@ my $file_link = $query->param('file_link');
 my $project = $query->param('project');
 my $Point = $query->param('Point');
 
-if (defined ($project)) {
-    if  ($project) {
-        $project="/".$project;
-        }
-    else  {
-        $project="/General";
-        }
-}
-else {
-    $project="/General";
-}
-
-if (defined ($Point)) {
-    if  ($Point) {
-        if  ($project) {
-           $project=$project."/".$Point;
-           }
-        else  {
-           $project="/".$Point;
-           }
-    }
-}
-
 print $query->header (-charset=>'utf-8' );
 
 #print $filename;
@@ -110,6 +87,26 @@ else
 }
 
 
+if (defined ($project)) {
+    if  (! $project) {
+    else  {
+        $project="General";
+        }
+}
+else {
+    $project="General";
+}
+
+if (defined ($Point)) {
+    if  (! $Point) {
+    else  {
+        $Point=$name;
+        }
+}
+else {
+    $Point=$name;
+}
+
 #print "Content-type: text/html\n\n";
 print "<html><head>";
 print '<link rel="stylesheet" type="text/css" href="/css/tcui-styles.css">';
@@ -126,7 +123,7 @@ if ($TrimbleTools) {
     $upload_file = "/home8/trimblet/public_html/cgi-bin/tmp/".$filename;
 }
 else {
-    $upload_file = "/run/shm/".$filename;
+    $upload_file = "/tmp/".$filename;
 }
 
 
@@ -157,12 +154,9 @@ if ($file_linked) {
     system("curl -L --silent -o $upload_file $file_link")
 }
 
-
-#Content-type: text/html
-#application/vnd.google-earth.kml+xml
-
+my $TZ=0
 print "Data is being processed: This will normally takes a few seconds but can take longer for very large files.<br>";
-print "The graphs will be at \<a href=\"/results/Tracking$project/$name\"\>/results/Tracking$project/$name/\</a\>\n";
+print "The graphs will be at \<a href=\"/results/Voltage/$project/$Point/$name\"\>/results/Voltage/$project/$Point/$name\</a\>\n";
 print "<p/>Processing will continue if you navigate away from this page<br/>";
 print "<pre>\n";
-system "./start_single.sh",$upload_file,$extension,$TrimbleTools,$project
+system "./start_single.sh",$extension,$project,$Point,$TZ,$upload_file
