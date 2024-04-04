@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 
 #import fileinput
 import pprint
@@ -25,6 +25,7 @@ for line in sys.stdin:
    line=line.replace(" ","")
    line=line.replace("Nan","")
    fields=line.split(",")
+#   print fields
 
    if len(fields) < 3 :
       continue
@@ -48,7 +49,7 @@ for line in sys.stdin:
             field_id=int(fields[3+2*field])
             field_value=fields[4+2*field]
 #            print field_id,field_value
-            output_fields[field_id]=field_value
+            output_fields[1+field]=field_value
 #            print output_fields
 
 #       print "Fields 4"
