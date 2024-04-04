@@ -16,6 +16,8 @@ Local_Time_Offset=3600*Local_TZ
 #Local_Time_Offset=0
 Local_Hours=Local_Time_Offset/3600
 
+set ylabel "External Voltage"
+
 set y2tics
 set y2label "Internal Battery Voltage"
 
