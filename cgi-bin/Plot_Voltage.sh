@@ -34,7 +34,8 @@ shift
 FileFull=`basename $1`;
 File=`basename $1 $TYPE`;
 
-mkdir -p /var/www/html/results/Voltage/$PROJ/$STATION/$File 
+mkdir -p /mnt/Data/results/Voltage/$PROJ/$STATION/$File 
+cd /mnt/Data/results/Voltage/$PROJ/$STATION/$File
 
 echo "Plotting Voltage for" $File
 logger "Plotting Voltage for $1"
@@ -42,9 +43,9 @@ logger "Plotting Voltage for $1"
 logger `whereis viewdat`
 logger `whereis /usr/lib/cgi-bin/VoltagePlot/X40_Power_To_Flat.py`
 logger `whereis gnuplot`
-viewdat -d40 -x $1 | /usr/lib/cgi-bin/VoltagePlot/X40_Power_To_Flat.py > /var/www/html/results/Voltage/$PROJ/$STATION/$File/file
+viewdat -d40 -x $1 | /usr/lib/cgi-bin/VoltagePlot/X40_Power_To_Flat.py
+viewdat -d40 -x $1 | /usr/lib/cgi-bin/VoltagePlot/X40_Power_To_Flat.py > /mnt/Data/results/Voltage/$PROJ/$STATION/$File/file
 
-cd /var/www/html/results/Voltage/$PROJ/$STATION/$File
 
 
 if [ -s file ]
