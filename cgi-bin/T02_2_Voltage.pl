@@ -98,7 +98,7 @@ else {
 
 if (defined ($Point)) {
     if  (! $Point) {
-        $Point=$name;
+        $Point=".";
         }
 }
 else {
@@ -117,12 +117,7 @@ print "<title>Plotting GNSS Tracking Data</title></head><body><h1>Processing $fi
 #print $filename."\n";
 my $upload_file="";
 
-if ($TrimbleTools) {
-    $upload_file = "/home8/trimblet/public_html/cgi-bin/tmp/".$filename;
-}
-else {
-    $upload_file = "/tmp/".$filename;
-}
+$upload_file = "/tmp/".$filename;
 
 
 #my $upload_file = $filename;
@@ -131,7 +126,8 @@ if ($file_uploaded) {
     print "Getting uploaded file<br>";
     my $upload_filehandle = $query->upload("file");
 
-#print $upload_file;
+    print $upload_file;
+    
     if (!open ( UPLOADFILE, ">$upload_file" )) {
 	print "\n could not open output file".$upload_file;
 	die "$!";
@@ -154,7 +150,7 @@ if ($file_linked) {
 
 my $TZ=0;
 print "Data is being processed: This will normally takes a few seconds but can take longer for very large files.<br>";
-print "The graphs will be at \<a href=\"/results/Voltage/$project/$Point/$name\"\>/results/Voltage/$project/$Point/$name\</a\>\n";
+print "The graphs will be at \<a href=\"/results/Voltage/$project/$Point/$name\"\> /results/Voltage/$project/$Point/$name\</a\>\n";
 print "<p/>Processing will continue if you navigate away from this page<br/>";
 print "<pre>\n";
 system "./start_single.sh",$extension,$project,$Point,$TZ,$upload_file
