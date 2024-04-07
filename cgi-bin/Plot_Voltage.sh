@@ -1,4 +1,4 @@
-#! /bin/bash 
+#! /bin/bash
 #SERVER=gnssplot.eng.trimble.com
 #SERVER=192.168.250.139
 
@@ -34,17 +34,17 @@ shift
 FileFull=`basename $1`;
 File=`basename $1 $TYPE`;
 
-mkdir -p /mnt/Data/results/Voltage/$PROJ/$STATION/$File 
+mkdir -p /mnt/Data/results/Voltage/$PROJ/$STATION/$File
 cd /mnt/Data/results/Voltage/$PROJ/$STATION/$File
 
-echo "Plotting Voltage for" $File
-logger "Plotting Voltage for $1"
+echo "Plotting Voltage and Temperature for" $File
+logger "Plotting Voltage and Temperature for $1"
 
 logger `whereis viewdat`
 logger `whereis /usr/lib/cgi-bin/VoltagePlot/X40_Power_To_Flat.py`
 logger `whereis gnuplot`
-viewdat -d40 -x $1 | /usr/lib/cgi-bin/VoltagePlot/X40_Power_To_Flat.py
-viewdat -d40 -x $1 | /usr/lib/cgi-bin/VoltagePlot/X40_Power_To_Flat.py > /mnt/Data/results/Voltage/$PROJ/$STATION/$File/file
+viewdat -d40 $1 | /usr/lib/cgi-bin/VoltagePlot/X40_Power_To_Flat.py
+viewdat -d40 $1 | /usr/lib/cgi-bin/VoltagePlot/X40_Power_To_Flat.py > /mnt/Data/results/Voltage/$PROJ/$STATION/$File/file
 
 
 
@@ -61,8 +61,8 @@ then
     gnuplot file.plt $normalDir/X40_Plot.plt
     ln -s $normalDir/index.shtml index.shtml
 else
-    echo $File "does not have Voltage/Temp Records"
-    logger $File "does not have Voltage/Temp Records"
+    echo $File "does not have Voltage/TTemperature Records"
+    logger $File "does not have Voltage/Temperature Records"
     rm file
     cd ..
     rmdir /var/www/html/results/Voltage/$PROJ/$STATION/$File
