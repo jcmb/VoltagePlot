@@ -64,7 +64,7 @@ for line in sys.stdin:
     values = re.match(pattern, line)
 
     if values != None:
-        print(line)
+#        print(line)
         key=values[1].strip()
 #        pprint.pprint(key)
         value=float(values[2])
