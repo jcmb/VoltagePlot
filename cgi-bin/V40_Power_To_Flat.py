@@ -52,7 +52,6 @@ for line in sys.stdin:
         continue
 
     if line == "":
-        print("end of record")
         if inRecord:
             writer.writerow(output_fields)
         inRecord=False
