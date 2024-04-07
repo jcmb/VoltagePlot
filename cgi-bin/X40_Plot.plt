@@ -68,7 +68,7 @@ unset y2label
 plot \
      'file' using ($1+Local_Time_Offset):($8) title "Internal Temperature",\
      'file' using ($1+Local_Time_Offset):($9) title "Radio Temperature",\
-     'file' using ($1+Local_Time_Offset):($q0) title "Cell Temperature"
+     'file' using ($1+Local_Time_Offset):($10) title "Cell Temperature"
 
 
 quit
