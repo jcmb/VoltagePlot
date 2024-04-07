@@ -16,10 +16,10 @@ Local_Time_Offset=3600*Local_TZ
 #Local_Time_Offset=0
 Local_Hours=Local_Time_Offset/3600
 
-set ylabel "External Voltage"
+set ylabel "Voltage"
 
 set y2tics
-set y2label "Internal Battery Voltage"
+set y2label "Source in use"
 
 
 
@@ -35,7 +35,10 @@ set output "Voltage.png"
 plot \
      'file' using ($1+Local_Time_Offset):($2) title "External 1",\
      'file' using ($1+Local_Time_Offset):($3) title "External 2",\
-     'file' using ($1+Local_Time_Offset):($4) title "Battery" axis x1y2
+     'file' using ($1+Local_Time_Offset):($4) title "USB",\
+     'file' using ($1+Local_Time_Offset):($5) title "Battery 1",\
+     'file' using ($1+Local_Time_Offset):($6) title "Battery 2",\
+     'file' using ($1+Local_Time_Offset):($7) title "Source" axis x1y2
 
 set title name." Voltage & Temp"
 set output "VoltTemp.png"
@@ -47,10 +50,25 @@ set y2label "Temperature (celsius)"
 plot \
      'file' using ($1+Local_Time_Offset):($2) title "External 1",\
      'file' using ($1+Local_Time_Offset):($3) title "External 2",\
-     'file' using ($1+Local_Time_Offset):($4) title "Battery",\
-     'file' using ($1+Local_Time_Offset):($6) title "Temperature" axis x1y2
+     'file' using ($1+Local_Time_Offset):($4) title "USB",\
+     'file' using ($1+Local_Time_Offset):($5) title "Battery 1",\
+     'file' using ($1+Local_Time_Offset):($6) title "Battery 2",\
+     'file' using ($1+Local_Time_Offset):($8) title "Internal Temperature" axis x1y2
+
+set title name." Temperatures"
+set output "Temp.png"
+
+set ylabel "Temperature (celsius)"
+
+unset y2tics
+unset y2label
 
 
+
+plot \
+     'file' using ($1+Local_Time_Offset):($8) title "Internal Temperature",\
+     'file' using ($1+Local_Time_Offset):($9) title "Radio Temperature",\
+     'file' using ($1+Local_Time_Offset):($q0) title "Cell Temperature"
 
 
 quit
