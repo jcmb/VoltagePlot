@@ -43,8 +43,8 @@ logger "Plotting Voltage and Temperature for $1"
 logger `whereis viewdat`
 logger `whereis /usr/lib/cgi-bin/VoltagePlot/X40_Power_To_Flat.py`
 logger `whereis gnuplot`
-viewdat -d40 $1 | /usr/lib/cgi-bin/VoltagePlot/X40_Power_To_Flat.py
-viewdat -d40 $1 | /usr/lib/cgi-bin/VoltagePlot/X40_Power_To_Flat.py > /mnt/Data/results/Voltage/$PROJ/$STATION/$File/file
+viewdat -d40 $1 | /usr/lib/cgi-bin/VoltagePlot/V40_Power_To_Flat.py
+viewdat -d40 $1 | /usr/lib/cgi-bin/VoltagePlot/V40_Power_To_Flat.py > /mnt/Data/results/Voltage/$PROJ/$STATION/$File/file
 
 
 
@@ -61,7 +61,7 @@ then
     gnuplot file.plt $normalDir/X40_Plot.plt
     ln -s $normalDir/index.shtml index.shtml
 else
-    echo $File "does not have Voltage/TTemperature Records"
+    echo $File "does not have Voltage/Temperature Records"
     logger $File "does not have Voltage/Temperature Records"
     rm file
     cd ..
