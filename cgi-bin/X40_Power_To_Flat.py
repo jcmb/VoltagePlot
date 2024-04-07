@@ -54,8 +54,8 @@ for line in sys.stdin:
 
 #       print "Fields 4"
        if output_fields[1] or output_fields[2] or output_fields[3] :
-          writer.writerow(output_fields	)
-          #Only write a line if there is a voltage 
+          writer.writerow(output_fields)
+          #Only write a line if there is a voltage
 #       print output_fields
    except :
       continue
